@@ -2,7 +2,9 @@ name: release
 
 on:
   push:
-    tags: ["v*"]
+    # v* for numbered cuts, plus the codename series the agent versions by:
+    # pio (Pioneer), voy (Voyager), cas (Cassini), new (New Horizons).
+    tags: ["v*", "pio", "voy", "cas", "new"]
   workflow_dispatch:
 
 permissions:
