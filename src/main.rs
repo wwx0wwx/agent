@@ -20,6 +20,13 @@ use tokio_tungstenite::tungstenite::{Error as WsError, Message};
 
 use collect::Collector;
 
+/// The generation this build belongs to, named for deep-space probes in launch
+/// order -- pio (Pioneer), voy (Voyager), cas (Cassini), new (New Horizons) --
+/// each flown farther than the last. Reported to the hub in every hello and
+/// shown to the operator, never compared programmatically; the Cargo package
+/// version stays numeric because the toolchain requires semver.
+pub const CODENAME: &str = "pio";
+
 struct Args {
     server: String,
     token: String,
@@ -40,7 +47,7 @@ fn usage() -> ! {
            --insecure           Allow plain ws:// to a remote hub; the token\n  \
                                 travels in the clear. Only for a hub reached\n  \
                                 at ip:port with no TLS in front.\n",
-        env!("CARGO_PKG_VERSION")
+        CODENAME
     );
     std::process::exit(2)
 }

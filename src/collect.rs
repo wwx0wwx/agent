@@ -151,7 +151,7 @@ impl Collector {
             mem_total: mem.get("MemTotal").copied().unwrap_or(0),
             swap_total: mem.get("SwapTotal").copied().unwrap_or(0),
             disk_total,
-            agent_version: env!("CARGO_PKG_VERSION").into(),
+            agent_version: crate::CODENAME.into(),
             ipv4: v4,
             ipv6: v6,
         }
